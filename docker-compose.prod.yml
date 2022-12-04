@@ -1,0 +1,22 @@
+version: '3'
+services:
+  web:
+    build: /Users/thibaultehrhart/Projects/D2KLab/explorer
+    ports:
+      - '4733:3000'
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ./.env:/custom/.env
+      - ./public:/custom/public
+      - ./config:/custom/config
+      - ./config.js:/custom/config.js
+      - ./theme.js:/custom/theme.js
+    command: sh -c "cp -r /custom/. /usr/src/app/ && npm run build && npm start"
+    restart: unless-stopped
+  mongo:
+    restart: unless-stopped
+  imaginary:
+    restart: unless-stopped
+  redis:
+    restart: unless-stopped

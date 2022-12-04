@@ -1,0 +1,9 @@
+{
+  "hero": {
+    "headline": "Demo"
+  },
+  "search": {
+    "placeholder": "Search for countries within DBpedia ..."
+  },
+  "browseBy": "or browse by"
+}

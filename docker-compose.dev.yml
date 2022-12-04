@@ -1,0 +1,19 @@
+version: '3'
+services:
+  web:
+    command: npm run dev
+    ports:
+      - '3000:3000'
+    volumes:
+      - /usr/src/app/node_modules
+      - /usr/src/app/.next
+      - ./.env:/usr/src/app/.env
+      - ./config.js:/usr/src/app/config.js
+      - ./config/:/usr/src/app/config/
+      - ./theme.js:/usr/src/app/theme.js
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+  mongo:
+    ports:
+      - '27019:27017'

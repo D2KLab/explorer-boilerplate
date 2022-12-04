@@ -1,0 +1,29 @@
+version: '3'
+services:
+  web:
+    container_name: explorer_web
+    build: https://github.com/D2KLab/explorer.git
+    depends_on:
+      - mongo
+      - redis
+    environment:
+      - NODE_ENV=${NODE_ENV}
+  mongo:
+    container_name: explorer_mongo
+    image: mongo
+    volumes:
+      - mongo:/data/db
+  imaginary:
+    container_name: explorer_imaginary
+    image: h2non/imaginary:latest
+    volumes:
+      - images:/mnt/data
+    environment:
+      PORT: 9000
+    command: -enable-url-source -mount /mnt/data -allowed-origins ${IMAGINARY_ALLOWED_ORIGINS} -http-cache-ttl 31556926
+  redis:
+    container_name: explorer_redis
+    image: redis
+volumes:
+  mongo: {}
+  images: {}
