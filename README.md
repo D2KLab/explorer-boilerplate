@@ -33,4 +33,4 @@ docker-compose -f docker-compose.yml -f docker-compose.prod.yml up
 
 ## License
 
-Explorer Boiletplate is [Apache licensed](https://github.com/D2KLab/explorer-boilerplate/blob/main/LICENSE).
+Explorer Boilerplate is [Apache licensed](https://github.com/D2KLab/explorer-boilerplate/blob/main/LICENSE).
