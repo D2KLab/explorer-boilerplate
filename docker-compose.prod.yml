@@ -1,6 +1,7 @@
 services:
   web:
-    build: /Users/thibaultehrhart/Projects/D2KLab/explorer
+    build:
+      dockerfile: prod.Dockerfile
     ports:
       - '4733:3000'
     environment:
@@ -11,7 +12,13 @@ services:
       - ./config:/custom/config
       - ./config.js:/custom/config.js
       - ./theme.js:/custom/theme.js
-    command: sh -c "cp -r /custom/. /usr/src/app/ && npm run build && npm start"
+    command:
+      - /bin/sh
+      - -c
+      - |
+        cp -r /custom/. /usr/src/app/
+        npm run build
+        npm start
     restart: unless-stopped
   mongo:
     restart: unless-stopped

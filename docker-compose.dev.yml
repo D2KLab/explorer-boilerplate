@@ -1,6 +1,8 @@
 services:
   web:
     command: npm run dev
+    build:
+      dockerfile: dev.Dockerfile
     ports:
       - '3000:3000'
     volumes:
